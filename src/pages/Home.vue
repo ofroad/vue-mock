@@ -1,6 +1,7 @@
 <template>
   <div id="kkk" class="home">
     <HelloWorld msg="Welcome to Your Vue.js App666111333" />
+    <div class="bgt"></div>
   </div>
 </template>
 
@@ -48,3 +49,10 @@ export default {
   }
 };
 </script>
+<style scoped lang="scss">
+.bgt {
+  width: 120px;
+  height: 120px;
+  background: url(../assets/images/img-cry@2x.png) no-repeat 0 0;
+}
+</style>

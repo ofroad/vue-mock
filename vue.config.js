@@ -57,8 +57,21 @@ module.exports = {
     // 添加别名
     config.resolve.alias
       .set('@', resolve('src'))
+      .set('@assets', resolve('src/assets'))
       .set('@plugins', resolve('src/plugins'))
       .set('@components', resolve('src/components'));
+    //压缩图片
+    config.module
+      .rule('images')
+      .use('image-webpack-loader')
+      .loader('image-webpack-loader')
+      .options({
+        mozjpeg: { progressive: true, quality: 65 },
+        optipng: { enabled: false },
+        pngquant: { quality: '65-90', speed: 4 },
+        gifsicle: { interlaced: false },
+        webp: { quality: 75 }
+      });
   },
   productionSourceMap: false, //生产环境的 source map
   css: {
