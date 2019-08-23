@@ -3,6 +3,7 @@ import App from './App.vue';
 import router from './router/';
 import store from './vuex/store';
 //import axios from 'axios';
+import './mock.js';
 
 Vue.config.productionTip = false;
 //注释1

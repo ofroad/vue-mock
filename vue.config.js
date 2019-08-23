@@ -7,15 +7,15 @@ module.exports = {
   outputDir: process.env.VUE_APP_OUTPUT_DIR,
   //assetsDir: 'ddd',
   devServer: {
-    proxy: {
-      '/mock': {
-        target: 'https://www.easy-mock.com',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/mock': 'mock'
-        }
-      }
-    },
+    // proxy: {
+    //   '/mock': {
+    //     target: 'https://www.easy-mock.com',
+    //     changeOrigin: true,
+    //     pathRewrite: {
+    //       '^/mock': 'mock'
+    //     }
+    //   }
+    // },
     https: true,
     open: true,
     overlay: true

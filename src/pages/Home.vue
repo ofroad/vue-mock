@@ -8,8 +8,8 @@
 <script>
 // @ is an alias to /src
 import HelloWorld from '@components/HelloWorld.vue';
-import { getData, getQuan } from '../http/api';
-import $ from 'jquery123';
+import { testMock, testMock11 } from '../http/api';
+//import $ from 'jquery123';
 //import axios from 'axios';
 //import axios123 from '../http/http.js';
 
@@ -31,21 +31,22 @@ export default {
     */
   },
   created() {
-    this.getName();
-    //console.log(getData);
-    getData({ name: '234' }).then(function(data) {
-      console.log('data===', data);
-    });
-    getQuan({ usrOnlyId: '10000024742' }).then(function(data) {
-      console.log('data===', data);
-    });
-    //发起请求
-    //axios123.get('/mock/59df37ef05c0cc70abfc0d9d/example/query', { params: { name: 'www123' } });
+    // this.getName();
+    // console.log(getData);
+    // getData({ name: '234' }).then(function(data) {
+    //   console.log('data===', data);
+    // });
+    // getQuan({ usrOnlyId: '10000024742' }).then(function(data) {
+    //   console.log('data===', data);
+    // });
 
-    console.warn('警告1');
-    //window.jQuery('#kkk').addClass('important');
-    $('body').css('background-color', 'yellow');
-    console.log(window.jQuery);
+    testMock().then(function(data) {
+      console.log('data===', data);
+    });
+
+    testMock11({ name: 'www123' }).then(function(data) {
+      console.log('data===', data);
+    });
   }
 };
 </script>

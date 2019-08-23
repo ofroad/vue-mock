@@ -9,6 +9,12 @@ export function getData(params) {
 export function getQuan(params) {
   return axios.get('https://vps.beta.ule.com/vpsYzgMobile/award/NineOneNineReceiveCoupon.do', { params });
 }
+export function testMock(params) {
+  return axios.get('/api/articles', { params });
+}
+export function testMock11(params) {
+  return axios.get('/api/top', { params });
+}
 //注释3
 /*
  注释4
