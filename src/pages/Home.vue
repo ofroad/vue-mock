@@ -1,23 +1,21 @@
 <template>
   <div id="kkk" class="home">
-    <HelloWorld msg="Welcome to Your Vue.js App666111333" />
-    <div class="bgt"></div>
+    <p>阿发达爱的方式盾构法十多个水电费十大歌手电饭锅是的法规的广泛地走访韩国</p>
+    <router-link to="about">to about</router-link>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@components/HelloWorld.vue';
-import { testMock, testMock11 } from '../http/api';
+//import HelloWorld from '@components/HelloWorld.vue';
+import { testMock11, getData } from '../http/api';
 //import $ from 'jquery123';
 //import axios from 'axios';
 //import axios123 from '../http/http.js';
 
 export default {
   name: 'home',
-  components: {
-    HelloWorld
-  },
+  components: {},
   methods: {
     getName() {
       console.log('process.env.NODE_ENV===', process.env.NODE_ENV);
@@ -33,16 +31,19 @@ export default {
   created() {
     // this.getName();
     // console.log(getData);
-    // getData({ name: '234' }).then(function(data) {
-    //   console.log('data===', data);
-    // });
+
+    //此接口走本地代理到线上的easy-mock
+    getData({ name: '234' }).then(function(data) {
+      console.log('data===', data);
+    });
+
     // getQuan({ usrOnlyId: '10000024742' }).then(function(data) {
     //   console.log('data===', data);
     // });
 
-    testMock().then(function(data) {
-      console.log('data===', data);
-    });
+    // testMock().then(function(data) {
+    //   console.log('data===', data);
+    // });
 
     testMock11({ name: 'www123' }).then(function(data) {
       console.log('data===', data);
@@ -51,6 +52,10 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+.home {
+  background-color: #ffffff;
+  color: #03311c;
+}
 .bgt {
   width: 120px;
   height: 120px;

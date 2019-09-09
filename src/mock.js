@@ -27,11 +27,15 @@ const produceNewsData = function() {
 Mock.mock('/api/articles', 'get', produceNewsData);
 
 const produceNewsData11 = function(options) {
+  //option里面包含请求信息
   console.log('options===', options);
   let articles = [];
   for (let i = 0; i < 100; i++) {
     let newArticleObject = {
-      title: Random.csentence(5, 30) //  Random.csentence( min, max )
+      title: Random.csentence(5, 30),
+      email: Mock.mock('@email'),
+      idcard: Random.id(),
+      idcard123: Mock.mock('@id')
     };
     articles.push(newArticleObject);
   }

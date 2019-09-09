@@ -22,7 +22,7 @@ instance.interceptors.request.use(
     // 而后我们可以在响应拦截器中，根据状态码进行一些统一的操作。
     // const token = store.state.token;
     // token && (config.headers.Authorization = token);
-    console.log('config===', config);
+    // console.log('config===', config);
     return config;
   },
   error => {
@@ -39,7 +39,7 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   response => {
     //
-    console.log('response===', response);
+    // console.log('response===', response);
     return response;
   },
   error => {
