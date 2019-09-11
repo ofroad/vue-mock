@@ -1,9 +1,16 @@
 <template>
   <div class="about">
-    <h1>This is an about page换个地方好该防护等级放假吗8567867光华科技法规及恢复规划</h1>
-    <router-link to="/contact">to contact</router-link>
+    <h1>This is an pc page换个地方好该防护等级放假吗8567867光华科技法规及恢复规划</h1>
+    <router-link to="/">to home</router-link>
     <br />
     <router-link to="login">to login</router-link>
+    <div>
+      <input type="button" value="所有角色可见" /><br />
+      <input v-if="role === 'superadmin' || role === 'admin'" type="button" value="superadmin和admin可见" /><br />
+      <input v-if="role === 'superadmin'" type="button" value="仅superadmin可见" /><br />
+      <input v-if="role === 'admin'" type="button" value="仅admin可见" /><br />
+      <input v-if="role === 'common'" type="button" value="仅common可见" /><br />
+    </div>
   </div>
 </template>
 <script>
@@ -14,7 +21,12 @@
 //import axios123 from '../http/http.js';
 
 export default {
-  name: 'about',
+  name: 'pc',
+  computed: {
+    role() {
+      return this.$store.state.role;
+    }
+  },
   components: {},
   methods: {
     getName() {

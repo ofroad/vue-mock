@@ -2,7 +2,7 @@
 //const Mock = require('mockjs');
 import Mock from 'mockjs';
 Mock.setup({
-  timeout: 4000
+  timeout: 400
 });
 
 // 获取 mock.Random 对象
@@ -40,9 +40,67 @@ const produceNewsData11 = function(options) {
     articles.push(newArticleObject);
   }
   return {
-    data: articles
+    data: articles,
+    code: '0000',
+    message: '请求成功'
   };
 };
 // 拦截ajax请求，配置mock的数据
 //正则表达式处理带参数的url匹配
 Mock.mock(RegExp('/api/top' + '.*'), 'get', produceNewsData11);
+
+//用户登录接口
+const userLogin = function(options) {
+  // const queryStr = options.url.split('?')[1];
+  // const searchParams = new URLSearchParams(queryStr);
+  // const name = searchParams.get('name');
+  // const pwd = searchParams.get('pwd');
+  const params = JSON.parse(options.body);
+  console.log('params===', params);
+  const { name, pwd } = params;
+  let message = '',
+    role = '',
+    code = '';
+  if (name === 'qqq' && pwd === '111111') {
+    console.log('======超级管理员登录======');
+    message = '登录成功';
+    code = '0000';
+    role = 'superadmin';
+  } else if (name === 'www' && pwd === '222222') {
+    console.log('======普通管理员登录======');
+    message = '登录成功';
+    code = '0000';
+    role = 'admin';
+  } else if (name === 'eee' && pwd === '333333') {
+    console.log('======普通会员登录======');
+    message = '登录成功';
+    code = '0000';
+    role = 'common';
+  } else {
+    console.log('======用户名或密码错误======');
+    code = '1111';
+    message = '登录失败';
+  }
+  console.log('options===', options);
+  return {
+    code: code,
+    message: message,
+    role: role
+  };
+};
+// 拦截ajax请求，配置mock的数据
+//正则表达式处理带参数的url匹配
+Mock.mock(RegExp('/api/login' + '.*'), 'post', userLogin);
+
+//用户登出接口
+const userLoginOut = function() {
+  let message = '退出登录成功',
+    code = '0000';
+  return {
+    code: code,
+    message: message
+  };
+};
+// 拦截ajax请求，配置mock的数据
+//正则表达式处理带参数的url匹配
+Mock.mock(RegExp('/api/logout' + '.*'), 'post', userLoginOut);

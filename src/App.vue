@@ -17,14 +17,14 @@ export default {
   watch: {
     $route(to, from) {
       console.log('=======路由变化了======');
-      console.log('to===', to);
-      console.log('from===', from);
+      // console.log('to===', to);
+      // console.log('from===', from);
       if (to.meta.dep > from.meta.dep) {
-        console.log('前进');
-        this.transitionName = 'slide-right';
-      } else {
-        console.log('后退');
+        // console.log('前进');
         this.transitionName = 'slide-left';
+      } else {
+        // console.log('后退');
+        this.transitionName = 'slide-right';
       }
     }
   }
@@ -36,13 +36,27 @@ export default {
   margin: 0;
   padding: 0;
 }
+li {
+  list-style: none;
+}
+html {
+  height: 100%;
+}
 body {
   font-size: 16px;
+  height: 100%;
+}
+#app {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
 }
 .router {
   position: absolute;
   width: 100%;
   height: 100%;
+  top: 0;
+  left: 0;
 }
 
 .slide-right-leave-active,
@@ -54,31 +68,29 @@ body {
 
 /*==slide-right==*/
 .slide-right-enter-to {
-  z-index: 10;
-}
-.slide-right-leave-to {
   z-index: 2;
 }
+.slide-right-leave-to {
+  z-index: 10;
+}
 .slide-right-enter {
-  opacity: 1;
-  transform: translate(-100%, 0);
+  opacity: 0;
 }
 .slide-right-leave-to {
-  opacity: 1;
-  transform: translate(0, 0);
+  transform: translate(100%, 0);
 }
 
 /*==slide-left==*/
 .slide-left-enter-to {
-  z-index: 2;
-}
-.slide-left-leave-to {
   z-index: 10;
 }
+.slide-left-leave-to {
+  z-index: 2;
+}
 .slide-left-enter {
-  opacity: 0;
+  transform: translate(100%, 0);
 }
 .slide-left-leave-to {
-  transform: translate(-100%, 0);
+  opacity: 0.8;
 }
 </style>

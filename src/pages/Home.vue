@@ -1,14 +1,16 @@
 <template>
   <div id="kkk" class="home">
-    <p>阿发达爱的方式盾构法十多个水电费十大歌手电饭锅是的法规的广泛地走访韩国</p>
-    <router-link to="about">to about</router-link>
+    <p>阿发达爱的方式盾构法十多个水电费十大歌手电饭锅是的法规的广泛地走访韩国------------home</p>
+    <div><span @click="loginOut">退出登录</span></div>
+    <router-link to="about">to about</router-link><br />
+    <router-link to="/pa/pa01">to pa01</router-link><br />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 //import HelloWorld from '@components/HelloWorld.vue';
-import { testMock11, getData } from '../http/api';
+import { userLoginOut } from '../http/api';
 //import $ from 'jquery123';
 //import axios from 'axios';
 //import axios123 from '../http/http.js';
@@ -20,6 +22,20 @@ export default {
     getName() {
       console.log('process.env.NODE_ENV===', process.env.NODE_ENV);
       console.log('process.env.VUE_APP_ENV===', process.env.VUE_APP_ENV);
+    },
+    loginOut() {
+      userLoginOut({ name: 'www123' }).then(data => {
+        if (data.data.code === '0000') {
+          console.log('======退出登录成功======');
+          this.$cookies.remove('login');
+          this.$cookies.remove('role');
+          this.$store.commit('setLogin', { isLogin: false, age: 111 });
+          this.$store.commit('setRole', { role: '', age: 111 });
+          this.$router.push({
+            name: 'login'
+          });
+        }
+      });
     }
   },
   beforeCreate() {
@@ -31,23 +47,22 @@ export default {
   created() {
     // this.getName();
     // console.log(getData);
-
     //此接口走本地代理到线上的easy-mock
-    getData({ name: '234' }).then(function(data) {
-      console.log('data===', data);
-    });
-
+    // getData({ name: '234' }).then(function(data) {
+    //   console.log('data===', data);
+    // });
     // getQuan({ usrOnlyId: '10000024742' }).then(function(data) {
     //   console.log('data===', data);
     // });
-
     // testMock().then(function(data) {
     //   console.log('data===', data);
     // });
-
-    testMock11({ name: 'www123' }).then(function(data) {
-      console.log('data===', data);
-    });
+    // testMock11({ name: 'www123' }).then(function(data) {
+    //   console.log('data===', data);
+    // });
+  },
+  mounted() {
+    console.log('home this===', this);
   }
 };
 </script>

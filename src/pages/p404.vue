@@ -1,9 +1,9 @@
 <template>
   <div class="about">
-    <h1>This is an about page换个地方好该防护等级放假吗8567867光华科技法规及恢复规划</h1>
-    <router-link to="/contact">to contact</router-link>
+    <h1>This is an 404 page</h1>
+    <router-link to="/">to home</router-link>
     <br />
-    <router-link to="login">to login</router-link>
+    <router-link to="/login">to login</router-link>
   </div>
 </template>
 <script>
@@ -14,7 +14,7 @@
 //import axios123 from '../http/http.js';
 
 export default {
-  name: 'about',
+  name: 'p404',
   components: {},
   methods: {
     getName() {
@@ -27,7 +27,6 @@ export default {
     /*
     注释6
     */
-    console.warn('警告2');
   },
   created() {
     this.getName();

@@ -20,3 +20,13 @@ export function testMock11(params) {
  注释4
 */
 console.warn('警告4');
+//**********************
+//用户登录
+export function userLogin(params) {
+  return axios.post('/api/login', params);
+}
+
+//用户登出
+export function userLoginOut(params) {
+  return axios.post('/api/logout', params);
+}

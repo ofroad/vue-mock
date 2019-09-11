@@ -3,14 +3,27 @@ import './utils/rem';
 import App from './App.vue';
 import router from './router/';
 import store from './vuex/store';
+import cookies from 'js-cookie';
+import createRouter from './router/createRouter';
 //import axios from 'axios';
 import './mock.js';
 
 Vue.config.productionTip = false;
+Vue.prototype.$cookies = cookies;
 //注释1
 /*
  注释2
 */
+
+console.log('=======main.js 刷新页面同步登录状态======');
+//刷新页面同步登录状态
+cookies.get('login') && store.commit('setLogin', { isLogin: true, age: 111 });
+
+//刷新页面同步角色路由
+const role = cookies.get('role');
+role && store.commit('setRole', { role: role, age: 111 });
+role && createRouter(role);
+
 new Vue({
   router,
   store,
