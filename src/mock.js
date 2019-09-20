@@ -2,7 +2,7 @@
 //const Mock = require('mockjs');
 import Mock from 'mockjs';
 Mock.setup({
-  timeout: 400
+  timeout: 2000
 });
 
 // 获取 mock.Random 对象
@@ -104,3 +104,27 @@ const userLoginOut = function() {
 // 拦截ajax请求，配置mock的数据
 //正则表达式处理带参数的url匹配
 Mock.mock(RegExp('/api/logout' + '.*'), 'post', userLoginOut);
+
+//产品列表接口
+const getPrdList = function() {
+  let list = [];
+  for (let i = 0; i < 25; i++) {
+    let newArticleObject = {
+      title: Random.csentence(5, 30),
+      email: Mock.mock('@email'),
+      idcard: Random.id(),
+      idcard123: Mock.mock('@id'),
+      address: Mock.mock('@county(true)'),
+      name: Mock.mock('@cname')
+    };
+    list.push(newArticleObject);
+  }
+  return {
+    data: list,
+    code: '0000',
+    message: '请求成功'
+  };
+};
+// 拦截ajax请求，配置mock的数据
+//正则表达式处理带参数的url匹配
+Mock.mock(RegExp('/api/prdlist' + '.*'), 'post', getPrdList);

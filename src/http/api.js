@@ -30,3 +30,8 @@ export function userLogin(params) {
 export function userLoginOut(params) {
   return axios.post('/api/logout', params);
 }
+
+//产品列表
+export function getPrdList(params) {
+  return axios.post('/api/prdlist', params);
+}

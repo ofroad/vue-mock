@@ -4,6 +4,8 @@
     <div><span @click="loginOut">退出登录</span></div>
     <router-link to="about">to about</router-link><br />
     <router-link to="/pa/pa01">to pa01</router-link><br />
+    <router-link to="/loadmore">to loadmore</router-link><br />
+    <router-link to="/picker">to picker</router-link><br />
   </div>
 </template>
 

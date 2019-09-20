@@ -45,6 +45,39 @@ const roleRouter = [
       role: ['superadmin', 'admin', 'common']
     },
     component: () => import(/* webpackChunkName: "pc" */ '@/pages/pc.vue')
+  },
+  {
+    path: '/loadmore',
+    name: 'loadmore',
+    meta: {
+      dep: 2,
+      needLogin: true,
+      title: 'loadmore',
+      role: ['superadmin', 'admin', 'common']
+    },
+    component: () => import(/* webpackChunkName: "pc" */ '@/pages/loadmore.vue')
+  },
+  {
+    path: '/loadmore2',
+    name: 'loadmore2',
+    meta: {
+      dep: 2,
+      needLogin: true,
+      title: 'loadmore2',
+      role: ['superadmin', 'admin', 'common']
+    },
+    component: () => import(/* webpackChunkName: "pc" */ '@/pages/loadmore2.vue')
+  },
+  {
+    path: '/picker',
+    name: 'picker',
+    meta: {
+      dep: 2,
+      needLogin: true,
+      title: 'picker',
+      role: ['superadmin', 'admin', 'common']
+    },
+    component: () => import(/* webpackChunkName: "pc" */ '@/pages/picker.vue')
   }
 ];
 
