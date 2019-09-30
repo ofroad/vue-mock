@@ -8,12 +8,19 @@ import createRouter from './router/createRouter';
 //import axios from 'axios';
 import './mock.js';
 
+import NutUI from '@nutui/nutui';
+import '@nutui/nutui/dist/nutui.css';
+NutUI.install(Vue);
+
 Vue.config.productionTip = false;
 Vue.prototype.$cookies = cookies;
 //注释1
 /*
  注释2
 */
+console.log('store===', store);
+console.log('store.state.moduleA===', store.state.moduleA);
+console.log('store.getters===', store.getters['moduleA/doubleCount']);
 
 console.log('=======main.js 刷新页面同步登录状态======');
 //刷新页面同步登录状态

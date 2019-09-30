@@ -4,7 +4,7 @@
     <div class="wrap-picker">
       <div class="box-picker">
         <ul class="box-list" ref="scroll" @touchstart="start" @touchmove="move" @touchend="end">
-          <li :style="{ height: '40px', 'line-height': '40px' }" class="item" v-for="(item, index) in list" :key="index" @touchstart.stop="start" @touchmove.stop="move" @touchend.stop="end">
+          <li :style="{ height: '40px', 'line-height': '40px' }" class="item" v-for="(item, index) in list" :key="index">
             {{ item }}
           </li>
         </ul>
@@ -44,7 +44,7 @@ export default {
     },
     setPos(index, callback) {
       const distance = 40 * (1 - index);
-      this.$refs.scroll.style.transition = 'transform 0.5s';
+      //this.$refs.scroll.style.transition = 'transform 0.5s';
       this.$refs.scroll.style.transform = `translateY(${distance}px)`;
       callback &&
         setTimeout(() => {
@@ -52,46 +52,52 @@ export default {
         }, 1200);
     },
     start(e) {
+      e.preventDefault();
       //alert('start事件');
       console.log('start===', e);
       this.startpos = e.touches[0].clientY;
     },
     move(e) {
+      e.preventDefault();
       console.log('move===', e);
       this.endpos = e.changedTouches[0].clientY;
-      // this.$refs.scroll.style.transition = 'transform 1.5s';
       console.log('位移变化量===', this.endpos - this.startpos);
       this.distance = this.predistance + this.endpos - this.startpos;
       console.log('distance===', this.distance);
 
+      //限制滑动范围
       if (this.distance <= 40 && this.distance >= -360) {
-        this.$refs.scroll.style.transform = `translateY(${this.distance}px)`;
+        this.$refs.scroll.style.transition = '';
+        this.$refs.scroll.style.transform = `translate3d(0,${this.distance}px,0)`;
       }
     },
     end(e) {
+      e.preventDefault();
       // alert('end事件');
       console.log('end===', e);
+      //超过定位范围则回弹到最近的选择值点
       if (this.distance < -320) {
         this.distance = -320;
         this.setPos(9, () => {
-          this.$refs.scroll.style.transition = 'transform 0s';
+          this.$refs.scroll.style.transition = 'transform 1000ms cubic-bezier(0.19, 1, 0.22, 1)';
         });
       }
+      //超过定位范围则回弹到最近的选择值点
       if (this.distance > 0) {
         this.distance = 0;
         this.setPos(1, () => {
-          this.$refs.scroll.style.transition = 'transform 0s';
+          this.$refs.scroll.style.transition = 'transform 1000ms cubic-bezier(0.19, 1, 0.22, 1)';
         });
       }
 
-      // this.startpos = 0;
-      // this.distance = 0;
       const index = Math.ceil(1 + this.distance / -40);
       console.log('index===', index);
       if (this.distance >= -320 && this.distance <= 0) {
         this.setPos(index, () => {
-          this.$refs.scroll.style.transition = 'transform 0s';
+          this.$refs.scroll.style.transition = 'transform 1000ms cubic-bezier(0.19, 1, 0.22, 1)';
           this.distance = 40 * (1 - index);
+          //记住上次的位置
+          this.predistance = this.distance;
         });
       }
 
@@ -101,7 +107,9 @@ export default {
   },
   beforeCreate() {},
   created() {},
-  mounted() {}
+  mounted() {
+    //this.list = ['上海', '浙江', '江苏', '安徽', '湖北', '湖南', '广东', '广西', '云南'];
+  }
 };
 </script>
 
