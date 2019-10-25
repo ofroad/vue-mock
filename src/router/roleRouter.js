@@ -100,6 +100,17 @@ const roleRouter = [
       role: ['superadmin', 'admin', 'common']
     },
     component: () => import(/* webpackChunkName: "pc" */ '@/pages/picker02.vue')
+  },
+  {
+    path: '/mobile',
+    name: 'mobile',
+    meta: {
+      dep: 2,
+      needLogin: true,
+      title: 'mobile',
+      role: ['superadmin', 'admin', 'common']
+    },
+    component: () => import(/* webpackChunkName: "pc" */ '@/pages/mobile.vue')
   }
 ];
 
