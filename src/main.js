@@ -5,12 +5,15 @@ import router from './router/';
 import store from './vuex/store';
 import cookies from 'js-cookie';
 import createRouter from './router/createRouter';
+import vueJsonp11111 from 'vue-jsonp';
 //import axios from 'axios';
 import './mock.js';
 
 import NutUI from '@nutui/nutui';
 import '@nutui/nutui/dist/nutui.css';
 NutUI.install(Vue);
+Vue.use(vueJsonp11111);
+console.log('vueJsonp===', Vue.jsonp);
 
 Vue.config.productionTip = false;
 Vue.prototype.$cookies = cookies;

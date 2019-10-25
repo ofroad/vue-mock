@@ -111,6 +111,17 @@ const roleRouter = [
       role: ['superadmin', 'admin', 'common']
     },
     component: () => import(/* webpackChunkName: "pc" */ '@/pages/mobile.vue')
+  },
+  {
+    path: '/jsonp',
+    name: 'jsonp',
+    meta: {
+      dep: 2,
+      needLogin: true,
+      title: 'jsonp',
+      role: ['superadmin', 'admin', 'common']
+    },
+    component: () => import(/* webpackChunkName: "pc" */ '@/pages/jsonp.vue')
   }
 ];
 
