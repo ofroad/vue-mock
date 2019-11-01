@@ -30,6 +30,14 @@ Object.keys(components).forEach(key => {
     Vue.component(key, components[key]);
 });
 
+//beta环境使用vconsole
+if (process.env.VUE_APP_ENV === 'qa') {
+    // eslint-disable-next-line no-unused-vars
+    require('./utils/vconsole.min.js');
+    new window.VConsole();
+    //console.log('Vconsole123===', Vconsole);
+}
+
 //注释1
 /*
  注释2
