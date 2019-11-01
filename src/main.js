@@ -6,6 +6,7 @@ import store from './vuex/store';
 import cookies from 'js-cookie';
 import createRouter from './router/createRouter';
 import vueJsonp11111 from 'vue-jsonp';
+import components from './components/globalComponet.js';
 //import axios from 'axios';
 import './mock.js';
 
@@ -13,10 +14,16 @@ import NutUI from '@nutui/nutui';
 import '@nutui/nutui/dist/nutui.css';
 NutUI.install(Vue);
 Vue.use(vueJsonp11111);
-console.log('vueJsonp===', Vue.jsonp);
+//console.log('vueJsonp===', Vue.jsonp);
 
 Vue.config.productionTip = false;
 Vue.prototype.$cookies = cookies;
+
+//全局注册组件
+Object.keys(components).forEach(key => {
+    Vue.component(key, components[key]);
+});
+
 //注释1
 /*
  注释2
@@ -35,9 +42,9 @@ role && store.commit('setRole', { role: role, age: 111 });
 role && createRouter(role);
 
 new Vue({
-  router,
-  store,
-  render: h => h(App)
+    router,
+    store,
+    render: h => h(App)
 }).$mount('#app');
 
 // console.log('axios===', axios);
