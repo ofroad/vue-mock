@@ -6,6 +6,7 @@ import store from './vuex/store';
 import cookies from 'js-cookie';
 import createRouter from './router/createRouter';
 import vueJsonp11111 from 'vue-jsonp';
+import filters from './filter/index.js';
 import components from './components/globalComponet.js';
 //import axios from 'axios';
 import './mock.js';
@@ -18,6 +19,11 @@ Vue.use(vueJsonp11111);
 
 Vue.config.productionTip = false;
 Vue.prototype.$cookies = cookies;
+
+//全局注册过滤器
+Object.keys(filters).forEach(key => {
+    Vue.filter(key, filters[key]);
+});
 
 //全局注册组件
 Object.keys(components).forEach(key => {
