@@ -18,14 +18,21 @@ const getParams = function(config, key) {
     } else if (config.method.toLowerCase() === 'post') {
         if (typeof config.data === 'string') {
             console.log('=====参数为字符串======');
+            console.log('config.data===', config.data);
             //post请求的参数使用了qs后，config.data变成了a=b&c=d形式
-            const p = new URLSearchParams(config.data);
-            // console.log('p===', p);
-            //console.log(p.get(key));
-            return p.get(key);
+            let param = {};
+            try {
+                //处理config.data为"{a:12,b:13}"类型的情况
+                param = JSON.parse(config.data);
+                return param[key];
+            } catch (err) {
+                //处理config.data为"a=b&c=d"类型的情况
+                param = new URLSearchParams(config.data);
+                return param.get(key);
+            }
         } else {
             console.log('=====参数为对象======');
-            //
+            console.log('config.data===', config.data);
             return config.data[key];
         }
     }
@@ -44,7 +51,9 @@ instance.interceptors.request.use(
         // const token = store.state.token;
         // token && (config.headers.Authorization = token);
         console.log('request config===', config);
-        if (getParams(config, 'showLoading') !== 'false') {
+        const param = getParams(config, 'showLoading');
+        console.log('请求时的showLoading参数===', param);
+        if (param !== 'false') {
             console.log('正常请求+1');
             store.commit('setLoading', true);
         }
@@ -67,7 +76,9 @@ instance.interceptors.response.use(
     response => {
         //
         console.log('response===', response);
-        if (getParams(response.config, 'showLoading') !== 'false') {
+        const param = getParams(response.config, 'showLoading');
+        console.log('响应时的showLoading参数===', param);
+        if (param !== 'false') {
             console.log('正常返回响应-1');
             store.commit('setLoading', false);
         }

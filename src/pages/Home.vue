@@ -13,7 +13,7 @@
 <script>
 // @ is an alias to /src
 //import HelloWorld from '@components/HelloWorld.vue';
-import { userLoginOut, getQuan, getData2, getQuan2 } from '../http/api';
+import { userLoginOut, getQuan, getData, getData2, getQuan2 } from '../http/api';
 //import $ from 'jquery123';
 //import axios from 'axios';
 //import axios123 from '../http/http.js';
@@ -74,15 +74,15 @@ export default {
         //     //console.log('data===', data);
         // });
 
-        // getData({ usrOnlyId: '10000024742', showLoading: 'true' }, { showLoading: 'false' })
-        //     .then(function(data) {
-        //         //console.log('data===', data);
-        //     })
-        //     .catch(err => {
-        //         //console.log('getData err===', err);
-        //     });
+        getData({ usrOnlyId: '10000024742', showLoading: 'true' }, { showLoading: 'false' })
+            .then(function(data) {
+                console.log('data===', data);
+            })
+            .catch(err => {
+                console.log('getData err===', err);
+            });
 
-        getData2({ usrOnlyId: '123' })
+        getData2({ usrOnlyId: '123', showLoading1: 'true' })
             .then(function(data) {
                 console.log('data===', data);
             })
