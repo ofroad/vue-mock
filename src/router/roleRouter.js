@@ -178,6 +178,8 @@ const roleRouter = [
             title: 'router-params-dynamic',
             role: ['superadmin', 'admin', 'common']
         },
+        //定义别名
+        alias: '/mobile-111/:years',
         component: () => import(/* webpackChunkName: "pc" */ '@/pages/router-params.vue'),
         // 结合route自定义传值
         //URL /router-params-dynamic/2008 通过对route.params.years作为基础进行加工 作为属性传递给 路由 组件
