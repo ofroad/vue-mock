@@ -26,7 +26,9 @@ export default new Vuex.Store({
         role: '',
         menu: [],
         showLoading: false,
-        loadingCount: 0
+        loadingCount: 0,
+        //当前路由的上一个路由
+        from: {}
     },
     getters: {
         doubleCount(state) {
@@ -53,6 +55,9 @@ export default new Vuex.Store({
         },
         clearLoading(state) {
             state.loadingCount = 0;
+        },
+        setFrom(state, payload) {
+            state.from = payload;
         }
     },
     actions: {},

@@ -11,6 +11,10 @@ router.beforeEach((to, from, next) => {
     console.log('=========beforeEach========');
     console.log('main.js to===', to);
     console.log('main.js from===', from);
+
+    //存储路由来路
+    store.commit('setFrom', from);
+
     //动态设置页面title
     document.title = to.meta.title;
 
