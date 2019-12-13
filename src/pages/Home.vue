@@ -13,7 +13,7 @@
 <script>
 // @ is an alias to /src
 //import HelloWorld from '@components/HelloWorld.vue';
-import { userLoginOut, getQuan, getData, getData2, getQuan2 } from '../http/api';
+import { userLoginOut, getQuan, getData, getData2, getQuan2, gethuodong, getzige } from '../http/api';
 //import $ from 'jquery123';
 //import axios from 'axios';
 //import axios123 from '../http/http.js';
@@ -53,6 +53,26 @@ export default {
                         console.log('getData2 err===', err);
                     });
             });
+        },
+        huodong() {
+            //20191113541183
+            gethuodong({ activityIds: '20191210804957', showLoading: 'true' }).then(function(data) {
+                console.log('data===', data);
+                console.log('========开始执行huodong========');
+                console.log('=================', JSON.parse(data.data.data));
+            });
+        },
+        zige() {
+            console.log('========开始执行getzige========');
+            getzige({ activityCode: 'MA_U_153369864047100', fieldId: '', userOnlyId: '10000032786' })
+                .then(function(data) {
+                    console.log('========getzige 返回================================================================');
+                    console.log('data===', data);
+                    //console.log('=================', JSON.parse(data.data.data));
+                })
+                .catch(err => {
+                    console.log('wrtwertwer111111111111111===', err);
+                });
         }
     },
     beforeCreate() {
@@ -109,6 +129,35 @@ export default {
     mounted() {
         console.log('=======home mounted======');
         //console.log('home this===', this);
+        this.huodong();
+        //this.zige();
+
+        // this.$jsonp('https://service.beta.ule.com/appact/redenvelopes/getActivityTimes', {
+        //     activityCode: 'MA_U_153502237306183',
+        //     fieldId: '152',
+        //     userOnlyId: '1000068989',
+        //     callbackQuery: 'jsoncallback'
+        // })
+        //     .then(res => {
+        //         console.log('vuejsonpres222222222222222222222222222===', res);
+        //     })
+        //     .catch(err => {
+        //         console.log('vuejsonperr222222222222222222222222222333===', err);
+        //     });
+
+        this.$jsonp('https://service.beta.ule.com/appact/redenvelopes/lottry', {
+            activityCode: 'MA_U_153502237306183',
+            fieldId: '',
+            channel: '400001',
+            //userOnlyId: '1000068989',
+            callbackQuery: 'jsoncallback'
+        })
+            .then(res => {
+                console.log('抽奖res===', res);
+            })
+            .catch(err => {
+                console.log('抽奖res err===', err);
+            });
     }
 };
 </script>

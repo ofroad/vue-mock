@@ -1,5 +1,6 @@
 import axios from './http.js';
 import qs from 'qs';
+import md5 from 'js-md5';
 
 //console.log('axios===', axios);
 //export const getData = params => axios.get('/59df37ef05c0cc70abfc0d9d/example/query', { params });
@@ -42,4 +43,22 @@ export function userLoginOut(params) {
 export function getPrdList(params, config = {}) {
     //post请求设置config，默认显示loading,配置headers: { showLoading: false }不显示loading
     return axios.post('/api/prdlist', { ...params }, { headers: config });
+}
+
+//
+export function gethuodong(params, config = {}) {
+    console.log(config);
+    const timestamp = +new Date();
+    return axios.post('https://wholesale-api.beta.ule.com/orderactivity/api/firstOrderActivity/selectOrderActivityByIds', qs.stringify({ ...params }), {
+        headers: {
+            appId: 10012,
+            timestamp: timestamp,
+            sign: md5('10012' + '4c1efa8caff2c182' + timestamp)
+        }
+    });
+}
+
+export function getzige(params, config = {}) {
+    console.log(config);
+    return axios.get('https://service.beta.ule.com/appact/redenvelopes/getActivityTimes', { params });
 }

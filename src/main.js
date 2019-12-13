@@ -4,6 +4,7 @@ import App from './App.vue';
 import router from './router/';
 import store from './vuex/store';
 import cookies from 'js-cookie';
+import md5 from 'js-md5';
 import createRouter from './router/createRouter';
 import vueJsonp11111 from 'vue-jsonp';
 import filters from './filter/index.js';
@@ -19,6 +20,7 @@ Vue.use(vueJsonp11111);
 
 Vue.config.productionTip = false;
 Vue.prototype.$cookies = cookies;
+Vue.prototype.$md5 = md5;
 
 //全局注册过滤器
 Object.keys(filters).forEach(key => {
