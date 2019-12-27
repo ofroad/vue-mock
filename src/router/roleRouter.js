@@ -184,6 +184,26 @@ const roleRouter = [
         // 结合route自定义传值
         //URL /router-params-dynamic/2008 通过对route.params.years作为基础进行加工 作为属性传递给 路由 组件
         props: dynamicPropsFn
+    },
+    {
+        path: '/skill-001',
+        meta: {
+            dep: 2,
+            needLogin: true,
+            title: 'skill-001',
+            role: ['superadmin', 'admin', 'common']
+        },
+        component: () => import(/* webpackChunkName: "skill-001" */ '@/pages/skill-001.vue')
+    },
+    {
+        path: '/numberscroll',
+        meta: {
+            dep: 2,
+            needLogin: true,
+            title: 'numberscroll',
+            role: ['superadmin', 'admin', 'common']
+        },
+        component: () => import(/* webpackChunkName: "numberscroll" */ '@/pages/numberscroll.vue')
     }
 ];
 
