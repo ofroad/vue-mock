@@ -213,7 +213,17 @@ const roleRouter = [
             title: 'use-component-directly',
             role: ['superadmin', 'admin', 'common']
         },
-        component: () => import(/* webpackChunkName: "numberscroll" */ '@/pages/use-component-directly.vue')
+        component: () => import(/* webpackChunkName: "use-component-directly" */ '@/pages/use-component-directly.vue')
+    },
+    {
+        path: '/curve-run',
+        meta: {
+            dep: 2,
+            needLogin: true,
+            title: '元素曲线运动',
+            role: ['superadmin', 'admin', 'common']
+        },
+        component: () => import(/* webpackChunkName: "curve-run" */ '@/pages/curve-run.vue')
     }
 ];
 
