@@ -204,6 +204,16 @@ const roleRouter = [
             role: ['superadmin', 'admin', 'common']
         },
         component: () => import(/* webpackChunkName: "numberscroll" */ '@/pages/numberscroll.vue')
+    },
+    {
+        path: '/use-component-directly',
+        meta: {
+            dep: 2,
+            needLogin: true,
+            title: 'use-component-directly',
+            role: ['superadmin', 'admin', 'common']
+        },
+        component: () => import(/* webpackChunkName: "numberscroll" */ '@/pages/use-component-directly.vue')
     }
 ];
 
