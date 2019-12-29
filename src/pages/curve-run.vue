@@ -1,10 +1,15 @@
 <template>
     <div>
-        <div>元素曲线运动</div>
-        <transition v-on:before-enter="beforeEnter" v-on:enter="enter" v-on:after-enter="afterEnter" v-on:enter-cancelled="enterCancelled">
+        <div>元素运动</div>
+        <transition appear @before-enter="beforeEnter" @after-enter="afterEnter">
             <div id="ball" ref="ball" v-show="item"></div>
         </transition>
         <button @click="start">开始</button>
+
+        <!-- <transition name="slide-fade">
+            <p v-if="show">hello</p>
+        </transition>
+        <button @click="start2">开始</button> -->
     </div>
 </template>
 <script>
@@ -18,7 +23,8 @@ export default {
     name: 'curve-run',
     data() {
         return {
-            item: false
+            item: false,
+            show: true
         };
     },
     props: {
@@ -32,18 +38,32 @@ export default {
         start() {
             this.item = !this.item;
         },
+        start2() {
+            this.show = !this.show;
+        },
         beforeEnter(el) {
-            console.log('==beforeEnter==');
-            console.log('==el==', el);
-            //el.style.transition = 'transform 15.88s linear';
+            console.log('==beforeEnter==', el);
+            // 设置transform值
+            //el.style.transform = `translate3d(30px,50px , 0)`;
+            // 设置透明度
+            //el.style.opacity = 0;
         },
         enter(el, done) {
             console.log('==enter==');
-            el.style.transform = 'translate3d(300px,500px,0)';
+
             done();
         },
         afterEnter(el) {
             console.log('==afterEnter==', el);
+            el.style.transition = 'transform .88s cubic-bezier(0.49, -0.29, 0.75, 0.41)';
+            //el.style.transition = 'transform 1.88s linear';
+            el.style.transform = 'translate3d(300px,500px,0)';
+            el.style.opacity = 1;
+
+            el.addEventListener('transitionend', () => {
+                el.setAttribute('style', '');
+                this.item = false;
+            });
         },
         enterCancelled() {
             console.log('==enterCancelled==');
@@ -77,15 +97,17 @@ a {
     height: 50px;
     background-color: #42b983;
     border-radius: 100%;
-    transition: transform 15.88s linear;
 }
-.fade-enter-active {
-    // transition: transform 25s cubic-bezier(0.3, -0.25, 0.7, -0.15);
-    transition: transform 15.88s linear;
+
+.slide-fade-enter-active {
+    transition: all 10.3s ease;
 }
-.fade-enter-to {
-    transform: translate3d(500px, 600px, 0);
+.slide-fade-leave-active {
+    transition: all 10.8s cubic-bezier(1, 0.5, 0.8, 1);
 }
-.fade-enter {
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active for below version 2.1.8 */ {
+    transform: translateX(10px);
+    opacity: 0;
 }
 </style>

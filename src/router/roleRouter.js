@@ -224,6 +224,16 @@ const roleRouter = [
             role: ['superadmin', 'admin', 'common']
         },
         component: () => import(/* webpackChunkName: "curve-run" */ '@/pages/curve-run.vue')
+    },
+    {
+        path: '/shopping-ball',
+        meta: {
+            dep: 2,
+            needLogin: true,
+            title: '添加到购物车动画',
+            role: ['superadmin', 'admin', 'common']
+        },
+        component: () => import(/* webpackChunkName: "shopping-ball" */ '@/pages/shopping-ball.vue')
     }
 ];
 
