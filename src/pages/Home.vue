@@ -6,6 +6,7 @@
         <router-link to="/pa/pa01">to pa01</router-link><br />
         <router-link to="/loadmore">to loadmore</router-link><br />
         <router-link to="/picker">to picker</router-link><br />
+        <router-link to="/listpage">to listpage</router-link><br />
         <div @click="dochuan">开始测试串行请求</div>
     </div>
 </template>

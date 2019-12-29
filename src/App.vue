@@ -1,7 +1,9 @@
 <template>
     <div id="app">
         <transition :name="transitionName">
-            <router-view class="router" />
+            <keep-alive :include="routercached">
+                <router-view class="router" />
+            </keep-alive>
         </transition>
         <loading :show="shshowLoading123"></loading>
     </div>
@@ -17,7 +19,7 @@ export default {
         };
     },
     computed: {
-        ...mapState(['loadingCount']),
+        ...mapState(['loadingCount', 'routercached']),
         shshowLoading123() {
             return this.loadingCount > 0;
         }
@@ -25,8 +27,8 @@ export default {
     watch: {
         $route(to, from) {
             console.log('=======路由变化了======');
-            // console.log('to===', to);
-            // console.log('from===', from);
+            console.log('to===', to);
+            console.log('from===', from);
             if (to.meta.dep > from.meta.dep) {
                 // console.log('前进');
                 this.transitionName = 'slide-left';
@@ -34,6 +36,24 @@ export default {
                 // console.log('后退');
                 this.transitionName = 'slide-right';
             }
+            console.log('from.meta.cacheFor===', from.meta.cacheFor);
+            // if (from.name === 'listpage' && to.name === 'contact') {
+            //     console.log('符合缓存条件');
+            //     if (this.include.indexOf(from.name) === -1) {
+            //         this.include.push(from.name);
+            //     }
+            // }
+        }
+    },
+    methods: {
+        deleteItemFromArray(val) {
+            const i = this.include.indexOf(val);
+            if (i === -1) {
+                return;
+            }
+            this.include.splice(i, 1);
+            console.log('删除了', val);
+            console.log('this.include', this.include);
         }
     },
     created() {

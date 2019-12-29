@@ -6,8 +6,37 @@
 export default {
     name: 'userInfo',
     methods: {},
-    created() {},
-    mounted() {}
+    beforeCreate() {
+        console.log('==userInfo beforeCreate==');
+    },
+    created() {
+        console.log('==userInfo created==');
+        //console.log(getData);
+        // getData({ name: '234' }).then(function(data) {
+        //   console.log('data===', data);
+        // });
+        // getQuan({ usrOnlyId: '10000024742' }).then(function(data) {
+        //   console.log('data===', data);
+        // });
+    },
+    beforeMount() {
+        console.log('==userInfo beforeMount==');
+    },
+    mounted() {
+        console.log('==userInfo mounted==');
+    },
+    activated() {
+        console.log('==userInfo activated==');
+    },
+    deactivated() {
+        console.log('==userInfo deactivated==');
+    },
+    beforeDestroy() {
+        console.log('==userInfo beforeDestroy==');
+    },
+    destroyed() {
+        console.log('==userInfo destroyed==');
+    }
 };
 </script>
 

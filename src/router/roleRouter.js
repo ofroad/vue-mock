@@ -145,6 +145,7 @@ const roleRouter = [
     },
     {
         path: '/router-params-static',
+        name: 'router-params-static',
         meta: {
             dep: 2,
             needLogin: true,
@@ -157,6 +158,7 @@ const roleRouter = [
     },
     {
         path: '/router-params-query',
+        name: 'router-params-query',
         meta: {
             dep: 2,
             needLogin: true,
@@ -172,6 +174,7 @@ const roleRouter = [
     },
     {
         path: '/router-params-dynamic/:years',
+        name: 'router-params-dynamic',
         meta: {
             dep: 2,
             needLogin: true,
@@ -187,6 +190,7 @@ const roleRouter = [
     },
     {
         path: '/skill-001',
+        name: 'skill-001',
         meta: {
             dep: 2,
             needLogin: true,
@@ -197,6 +201,7 @@ const roleRouter = [
     },
     {
         path: '/numberscroll',
+        name: 'numberscroll',
         meta: {
             dep: 2,
             needLogin: true,
@@ -207,6 +212,7 @@ const roleRouter = [
     },
     {
         path: '/use-component-directly',
+        name: 'use-component-directly',
         meta: {
             dep: 2,
             needLogin: true,
@@ -217,6 +223,7 @@ const roleRouter = [
     },
     {
         path: '/curve-run',
+        name: 'curve-run',
         meta: {
             dep: 2,
             needLogin: true,
@@ -227,6 +234,7 @@ const roleRouter = [
     },
     {
         path: '/shopping-ball',
+        name: 'shopping-ball',
         meta: {
             dep: 2,
             needLogin: true,
@@ -234,6 +242,29 @@ const roleRouter = [
             role: ['superadmin', 'admin', 'common']
         },
         component: () => import(/* webpackChunkName: "shopping-ball" */ '@/pages/shopping-ball.vue')
+    },
+    {
+        path: '/listpage',
+        name: 'listpage',
+        meta: {
+            dep: 2,
+            needLogin: true,
+            title: '模拟列表页',
+            role: ['superadmin', 'admin', 'common'],
+            cachedFor: ['detailpage', 'contact']
+        },
+        component: () => import(/* webpackChunkName: "listpage" */ '@/pages/listpage.vue')
+    },
+    {
+        path: '/detailpage',
+        name: 'detailpage',
+        meta: {
+            dep: 2,
+            needLogin: true,
+            title: '模拟详情页',
+            role: ['superadmin', 'admin', 'common']
+        },
+        component: () => import(/* webpackChunkName: "detailpage" */ '@/pages/detailpage.vue')
     }
 ];
 
