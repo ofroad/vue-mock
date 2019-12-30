@@ -298,6 +298,17 @@ const roleRouter = [
             role: ['superadmin', 'admin', 'common']
         },
         component: () => import(/* webpackChunkName: "scope" */ '@/pages/scope.vue')
+    },
+    {
+        path: '/hook-event',
+        name: 'hook-event',
+        meta: {
+            dep: 2,
+            needLogin: true,
+            title: '监听子组件的生命周期',
+            role: ['superadmin', 'admin', 'common']
+        },
+        component: () => import(/* webpackChunkName: "hook-event" */ '@/pages/hook-event.vue')
     }
 ];
 
