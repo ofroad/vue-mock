@@ -265,6 +265,28 @@ const roleRouter = [
             role: ['superadmin', 'admin', 'common']
         },
         component: () => import(/* webpackChunkName: "detailpage" */ '@/pages/detailpage.vue')
+    },
+    {
+        path: '/debounce',
+        name: 'debounce',
+        meta: {
+            dep: 2,
+            needLogin: true,
+            title: '函数防抖',
+            role: ['superadmin', 'admin', 'common']
+        },
+        component: () => import(/* webpackChunkName: "debounce" */ '@/pages/debounce.vue')
+    },
+    {
+        path: '/throttle',
+        name: 'throttle',
+        meta: {
+            dep: 2,
+            needLogin: true,
+            title: '函数节流',
+            role: ['superadmin', 'admin', 'common']
+        },
+        component: () => import(/* webpackChunkName: "throttle" */ '@/pages/throttle.vue')
     }
 ];
 
