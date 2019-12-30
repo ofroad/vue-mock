@@ -287,6 +287,17 @@ const roleRouter = [
             role: ['superadmin', 'admin', 'common']
         },
         component: () => import(/* webpackChunkName: "throttle" */ '@/pages/throttle.vue')
+    },
+    {
+        path: '/scope',
+        name: 'scope',
+        meta: {
+            dep: 2,
+            needLogin: true,
+            title: 'scoped及穿透方法',
+            role: ['superadmin', 'admin', 'common']
+        },
+        component: () => import(/* webpackChunkName: "scope" */ '@/pages/scope.vue')
     }
 ];
 

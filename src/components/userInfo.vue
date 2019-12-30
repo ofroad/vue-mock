@@ -1,5 +1,8 @@
 <template>
-    <div>userInfo content</div>
+    <div>
+        userInfo content
+        <p class="uinfo">我可以在父组件中被改变样式</p>
+    </div>
 </template>
 
 <script>
@@ -103,5 +106,9 @@ export default {
         -webkit-transform: rotate(1turn);
         transform: rotate(1turn);
     }
+}
+.uinfo {
+    font-size: 16px;
+    color: #ccc;
 }
 </style>
