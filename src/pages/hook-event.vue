@@ -7,6 +7,7 @@
         <br />
         <router-link to="/listpage">to listpage</router-link>
         <br />
+        <!-- 使用 @hook:mounted="doSomething" 监听子组件的生命周期-->
         <userInfo @hook:mounted="doSomething"></userInfo>
     </div>
 </template>
@@ -31,6 +32,18 @@ export default {
         },
         doSomething() {
             console.log('userInfo  has mounted');
+        },
+        dos() {
+            const timer = setInterval(() => {
+                // 某些定时器操作
+                console.log('setInterval fun');
+            }, 500);
+            // 通过$once来监听定时器，在beforeDestroy钩子可以被清除。
+            //绑定组件的beforeDestroy事件，在组件的beforeDestroy周期会执行此事件对应处理方法
+            //$once只绑定一次
+            this.$once('hook:beforeDestroy', () => {
+                clearInterval(timer);
+            });
         }
     },
     beforeCreate() {
@@ -52,6 +65,7 @@ export default {
     },
     mounted() {
         console.log('==hook-event mounted==');
+        this.dos();
     }
 };
 </script>
