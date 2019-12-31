@@ -35,3 +35,4 @@ resolve.alias.set配置路径别名===================================完成
 =====优雅清除定时器======
 =====自定义组件与v-model======
 =====组件中props/methods/data/computed的渲染顺序,以及watch的使用(skill-001中)======
+=====computed中的setter以及给计算属性传参======

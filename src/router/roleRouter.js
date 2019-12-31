@@ -320,6 +320,17 @@ const roleRouter = [
             role: ['superadmin', 'admin', 'common']
         },
         component: () => import(/* webpackChunkName: "v-model" */ '@/pages/v-model.vue')
+    },
+    {
+        path: '/computed-setter',
+        name: 'computed-setter',
+        meta: {
+            dep: 2,
+            needLogin: true,
+            title: 'computed中的setter',
+            role: ['superadmin', 'admin', 'common']
+        },
+        component: () => import(/* webpackChunkName: "computed-setter" */ '@/pages/computed-setter.vue')
     }
 ];
 
