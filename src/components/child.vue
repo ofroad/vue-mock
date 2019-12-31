@@ -1,18 +1,52 @@
 <template>
-    <button @click="change">change</button>
+    <div>
+        child content
+        <p>我是儿子，父亲对我说： {{ give }}</p>
+        <p href="javascript:;" rel="external nofollow" @click="returnBackFn">回应</p>
+    </div>
 </template>
 
 <script>
 export default {
-    name: 'textdoc',
-    props: ['title123'],
+    name: 'child',
+    props: {
+        give: String
+    },
+    model: {
+        //model选项指定用give作为接收父组件v-model传过来的值，用'returnBack'作为父组件v-model对应的监听的事件
+        prop: 'give',
+        event: 'returnBack'
+    },
     methods: {
-        change() {
-            this.$emit('update:title123', 'change');
+        returnBackFn() {
+            //触发父组件的returnBack事件，会更新父组件的v-model绑定的属性的值
+            this.$emit('returnBack', '还你200块');
         }
     },
-    created() {},
-    mounted() {}
+    beforeCreate() {
+        console.log('==child beforeCreate==');
+    },
+    created() {
+        console.log('==child created==');
+    },
+    beforeMount() {
+        console.log('==child beforeMount==');
+    },
+    mounted() {
+        console.log('==child mounted==');
+    },
+    activated() {
+        console.log('==child activated==');
+    },
+    deactivated() {
+        console.log('==child deactivated==');
+    },
+    beforeDestroy() {
+        console.log('==child beforeDestroy==');
+    },
+    destroyed() {
+        console.log('==child destroyed==');
+    }
 };
 </script>
 
@@ -79,5 +113,9 @@ export default {
         -webkit-transform: rotate(1turn);
         transform: rotate(1turn);
     }
+}
+.uinfo {
+    font-size: 16px;
+    color: #ccc;
 }
 </style>

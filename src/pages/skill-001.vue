@@ -66,7 +66,7 @@
             -->
             <div>
                 <span>{{ title }}</span>
-                <textdoc v-bind:title.sync="title"></textdoc>
+                <textdoc v-bind:title123.sync="title"></textdoc>
             </div>
             <p>.sync就是一个语法糖</p>
         </div>

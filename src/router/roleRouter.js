@@ -309,6 +309,17 @@ const roleRouter = [
             role: ['superadmin', 'admin', 'common']
         },
         component: () => import(/* webpackChunkName: "hook-event" */ '@/pages/hook-event.vue')
+    },
+    {
+        path: '/v-model',
+        name: 'v-model',
+        meta: {
+            dep: 2,
+            needLogin: true,
+            title: '自定义组件与v-model',
+            role: ['superadmin', 'admin', 'common']
+        },
+        component: () => import(/* webpackChunkName: "v-model" */ '@/pages/v-model.vue')
     }
 ];
 
