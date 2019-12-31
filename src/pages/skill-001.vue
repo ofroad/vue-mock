@@ -65,7 +65,7 @@
                 this.$emit('input', value)
             -->
             <div>
-                <span>{{ title }}</span>
+                <span>我是父组件中的--{{ title }}</span>
                 <textdoc v-bind:title123.sync="title"></textdoc>
             </div>
             <p>.sync就是一个语法糖</p>

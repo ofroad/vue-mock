@@ -1,5 +1,8 @@
 <template>
-    <button @click="change">change</button>
+    <div>
+        <div>我是子组件中的--{{ title123 }}</div>
+        <button @click="change">change</button>
+    </div>
 </template>
 
 <script>
