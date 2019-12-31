@@ -70,6 +70,21 @@
             </div>
             <p>.sync就是一个语法糖</p>
         </div>
+
+        <div class="sbox">
+            <p>(7)组件中props/methods/data/computed的渲染顺序,以及watch的使用</p>
+            <p>props > methods > data > computed</p>
+            <renderOrder :name="cname"></renderOrder>
+            <div>
+                <p>data可以调用前面的props，methods的属性</p>
+                <p>computed中可以调用props，methods，data中的属性</p>
+                <button @click="changeCname">在父组件中动态改变传给renderOrder的cname值</button>
+                <p>可以发现，当在父组件中动态改变传给renderOrder的cname值时，子组件已经接收到了最新的name</p>
+                <p>但是，子组件中，在data里面定义的k(引用了name)并没有随之发生变化</p>
+                <p>但是，子组件中，在computed里面定义的kk(引用了name)随之发生了变化</p>
+                <p>如果想让k随之发生变化，可在子组件中watch,详见子组件</p>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -79,6 +94,7 @@
 //import axios from 'axios';
 //import axios123 from '../http/http.js';
 import textdoc from '@/components/textdoc.vue';
+import renderOrder from '@/components/renderOrder.vue';
 
 export default {
     name: 'skill-001',
@@ -89,11 +105,12 @@ export default {
             user: {
                 name: 'jack'
             },
-            title: 'default'
+            title: 'default',
+            cname: { name: 'jack' }
         };
     },
     props: {},
-    components: { textdoc },
+    components: { textdoc, renderOrder },
     methods: {
         doSomething() {
             console.log('sss');
@@ -126,6 +143,11 @@ export default {
         share5(a, b) {
             //传一个参数，但不传$event,拿不到envent对象
             console.log(a, b);
+        },
+        changeCname() {
+            this.cname = {
+                name: 'tom'
+            };
         }
     },
     beforeCreate() {
@@ -145,6 +167,7 @@ export default {
 
 <style scoped lang="scss">
 .about {
+    overflow: auto;
     background-color: #fff;
 }
 
