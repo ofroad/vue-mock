@@ -331,6 +331,17 @@ const roleRouter = [
             role: ['superadmin', 'admin', 'common']
         },
         component: () => import(/* webpackChunkName: "computed-setter" */ '@/pages/computed-setter.vue')
+    },
+    {
+        path: '/freeze',
+        name: 'freeze',
+        meta: {
+            dep: 2,
+            needLogin: true,
+            title: '利用Object.freeze提升渲染性能',
+            role: ['superadmin', 'admin', 'common']
+        },
+        component: () => import(/* webpackChunkName: "freeze" */ '@/pages/freeze.vue')
     }
 ];
 
