@@ -342,6 +342,17 @@ const roleRouter = [
             role: ['superadmin', 'admin', 'common']
         },
         component: () => import(/* webpackChunkName: "freeze" */ '@/pages/freeze.vue')
+    },
+    {
+        path: '/$props',
+        name: '$props',
+        meta: {
+            dep: 2,
+            needLogin: true,
+            title: 'vue中的$props',
+            role: ['superadmin', 'admin', 'common']
+        },
+        component: () => import(/* webpackChunkName: "$props" */ '@/pages/$props.vue')
     }
 ];
 

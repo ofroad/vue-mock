@@ -37,3 +37,5 @@ resolve.alias.set配置路径别名===================================完成
 =====组件中props/methods/data/computed的渲染顺序,以及watch的使用(skill-001中)======
 =====computed中的setter以及给计算属性传参======
 =====利用Object.freeze提升渲染性能======
+=====vue中的$props======
+=====vue中的$attrs和$listeners======
