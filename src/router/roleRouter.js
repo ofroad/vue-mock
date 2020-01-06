@@ -353,6 +353,17 @@ const roleRouter = [
             role: ['superadmin', 'admin', 'common']
         },
         component: () => import(/* webpackChunkName: "$props" */ '@/pages/$props.vue')
+    },
+    {
+        path: '/$attrs',
+        name: '$attrs',
+        meta: {
+            dep: 2,
+            needLogin: true,
+            title: 'vue中的$attrs和$listeners',
+            role: ['superadmin', 'admin', 'common']
+        },
+        component: () => import(/* webpackChunkName: "$attrs" */ '@/pages/$attrs.vue')
     }
 ];
 
