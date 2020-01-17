@@ -12,9 +12,17 @@
 //import { getData, getQuan } from '../http/api';
 //import axios from 'axios';
 //import axios123 from '../http/http.js';
-
+import { mapState } from 'vuex';
 export default {
     name: 'detailpage',
+    data() {
+        return {
+            preRoute: ''
+        };
+    },
+    computed: {
+        ...mapState(['from'])
+    },
     components: {},
     methods: {
         getName() {
@@ -53,6 +61,14 @@ export default {
     },
     destroyed() {
         console.log('==detailpage destroyed==');
+    },
+    beforeRouteLeave(to, from123, next) {
+        console.log('componet beforeRouteLeave');
+        if (to.name !== 'listpage') {
+            console.log('this.from===', this.from);
+            this.$store.commit('updateRoutercached', { route: this.from.name, action: 'delete' });
+        }
+        next();
     }
 };
 </script>

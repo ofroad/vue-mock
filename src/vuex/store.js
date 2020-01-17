@@ -31,7 +31,7 @@ export default new Vuex.Store({
         loadingCount: 0,
         //当前路由的上一个路由
         from: {},
-        routercached: []
+        routercached: ['listpage']
     },
     getters: {
         doubleCount(state) {
