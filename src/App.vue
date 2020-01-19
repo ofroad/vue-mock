@@ -1,10 +1,14 @@
 <template>
     <div id="app">
-        <transition :name="transitionName">
+        <!-- <transition :name="transitionName">
             <keep-alive :include="routercached">
                 <router-view class="router" />
             </keep-alive>
-        </transition>
+        </transition> -->
+        <keep-alive>
+            <router-view v-if="$route.meta.keepAlive"></router-view>
+        </keep-alive>
+        <router-view v-if="!$route.meta.keepAlive"></router-view>
         <loading :show="shshowLoading123"></loading>
     </div>
 </template>

@@ -251,7 +251,9 @@ const roleRouter = [
             needLogin: true,
             title: '模拟列表页',
             role: ['superadmin', 'admin', 'common'],
-            cachedFor: ['detailpage', 'contact']
+            //从listpage到cachedFor里面的页面，会将listpage的keepAlive设为true
+            cachedFor: ['detailpage', 'contact'],
+            keepAlive: true
         },
         component: () => import(/* webpackChunkName: "listpage" */ '@/pages/listpage.vue')
     },

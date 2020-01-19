@@ -25,12 +25,22 @@ router.beforeEach((to, from, next) => {
         //登录状态有效
         if (to.name !== 'login') {
             //动态更新keep-alive的include数据
-            if (from.meta.cachedFor && from.meta.cachedFor.includes(to.name)) {
-                console.log('符合缓存条件');
-                store.commit('updateRoutercached', { route: from.name, action: 'add' });
-            } else {
-                console.log('不符合缓存条件');
-                store.commit('updateRoutercached', { route: from.name, action: 'delete' });
+            // if (from.meta.cachedFor && from.meta.cachedFor.includes(to.name)) {
+            //     console.log('符合缓存条件');
+            //     store.commit('updateRoutercached', { route: from.name, action: 'add' });
+            // } else {
+            //     console.log('不符合缓存条件');
+            //     store.commit('updateRoutercached', { route: from.name, action: 'delete' });
+            // }
+            if (from.meta.cachedFor) {
+                console.log('===111111===');
+                if (from.meta.cachedFor.includes(to.name)) {
+                    console.log('10');
+                    from.meta.keepAlive = true;
+                } else if (!from.meta.cachedFor.includes(to.name)) {
+                    console.log('11');
+                    from.meta.keepAlive = false;
+                }
             }
             //路由继续走
             next();

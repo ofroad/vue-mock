@@ -16,9 +16,7 @@ import { mapState } from 'vuex';
 export default {
     name: 'detailpage',
     data() {
-        return {
-            preRoute: ''
-        };
+        return {};
     },
     computed: {
         ...mapState(['from'])
@@ -64,9 +62,12 @@ export default {
     },
     beforeRouteLeave(to, from123, next) {
         console.log('componet beforeRouteLeave');
+        //在全局beforeEach里面做进入路由的判断，在组件(页面)里面做离开路由的判断
         if (to.name !== 'listpage') {
+            //从detail页离开时，如果不是去list页面，则将detail页面的上一个路由的keepAlive设为false
+            //from为当前路由的上一个路由(从vuex里面取的)
             console.log('this.from===', this.from);
-            this.$store.commit('updateRoutercached', { route: this.from.name, action: 'delete' });
+            this.from.meta.keepAlive = false;
         }
         next();
     }
