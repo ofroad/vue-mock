@@ -366,6 +366,17 @@ const roleRouter = [
             role: ['superadmin', 'admin', 'common']
         },
         component: () => import(/* webpackChunkName: "$attrs" */ '@/pages/$attrs.vue')
+    },
+    {
+        path: '/slot',
+        name: 'slot',
+        meta: {
+            dep: 2,
+            needLogin: true,
+            title: 'vue中的slot插槽',
+            role: ['superadmin', 'admin', 'common']
+        },
+        component: () => import(/* webpackChunkName: "slot" */ '@/pages/slot.vue')
     }
 ];
 

@@ -39,3 +39,4 @@ resolve.alias.set配置路径别名===================================完成
 =====利用Object.freeze提升渲染性能======
 =====vue中的$props======
 =====vue中的$attrs和$listeners======
+=====slot用法======
