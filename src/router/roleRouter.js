@@ -388,6 +388,17 @@ const roleRouter = [
             role: ['superadmin', 'admin', 'common']
         },
         component: () => import(/* webpackChunkName: "observable" */ '@/pages/observable.vue')
+    },
+    {
+        path: '/debounce-component',
+        name: 'debounce-component',
+        meta: {
+            dep: 2,
+            needLogin: true,
+            title: '实现函数防抖组件',
+            role: ['superadmin', 'admin', 'common']
+        },
+        component: () => import(/* webpackChunkName: "debounce-component" */ '@/pages/debounce-component.vue')
     }
 ];
 
