@@ -8,6 +8,10 @@
         <router-link to="/picker">to picker</router-link><br />
         <router-link to="/listpage">to listpage</router-link><br />
         <div @click="dochuan">开始测试串行请求</div>
+        <p>observable store: {{ store.count }}</p>
+        <button @click.prevent="handleAdd">首页 - 加</button>
+        <button @click.prevent="handleMinus">首页 - 减</button><br />
+        <router-link to="/observable">to observable</router-link><br />
     </div>
 </template>
 
@@ -18,9 +22,14 @@ import { userLoginOut, getQuan, getData, getData2, getQuan2, gethuodong, getzige
 //import $ from 'jquery123';
 //import axios from 'axios';
 //import axios123 from '../http/http.js';
-
+import { store_observable, mutations } from '../vuex/store_observable';
 export default {
     name: 'home',
+    data() {
+        return {
+            store: store_observable
+        };
+    },
     components: {},
     methods: {
         getName() {
@@ -74,6 +83,12 @@ export default {
                 .catch(err => {
                     console.log('wrtwertwer111111111111111===', err);
                 });
+        },
+        handleAdd() {
+            mutations.addCount();
+        },
+        handleMinus() {
+            mutations.minusCount();
         }
     },
     beforeCreate() {

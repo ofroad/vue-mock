@@ -377,6 +377,17 @@ const roleRouter = [
             role: ['superadmin', 'admin', 'common']
         },
         component: () => import(/* webpackChunkName: "slot" */ '@/pages/slot.vue')
+    },
+    {
+        path: '/observable',
+        name: 'observable',
+        meta: {
+            dep: 2,
+            needLogin: true,
+            title: 'vue中的observable api',
+            role: ['superadmin', 'admin', 'common']
+        },
+        component: () => import(/* webpackChunkName: "observable" */ '@/pages/observable.vue')
     }
 ];
 
