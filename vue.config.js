@@ -1,7 +1,7 @@
 const path = require('path');
 const resolve = dir => path.join(__dirname, dir);
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-
+const CompressionWebpackPlugin = require('compression-webpack-plugin');
 module.exports = {
     publicPath: process.env.VUE_APP_PUBLIC_PATH,
     outputDir: process.env.VUE_APP_OUTPUT_DIR,
@@ -38,6 +38,16 @@ module.exports = {
                     },
                     sourceMap: false,
                     parallel: true
+                })
+            );
+            plugins.push(
+                new CompressionWebpackPlugin({
+                    // 正在匹配需要压缩的文件后缀
+                    test: /\.(js|css|svg|woff|ttf|json|html)$/,
+                    // 大于10kb的会压缩,默认0
+                    threshold: 10240,
+                    // 是否删除源文件，默认: false
+                    deleteOriginalAssets: false
                 })
             );
             config.plugins = [...config.plugins, ...plugins];

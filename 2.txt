@@ -41,3 +41,4 @@ resolve.alias.set配置路径别名===================================完成
 =====vue中的$attrs和$listeners======
 =====slot用法======
 =====observable api的用法======
+=====vue.config.js配置Gzip压缩======
