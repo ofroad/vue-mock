@@ -12,7 +12,7 @@
     "@nutui/nutui": "^2.1.5",
     "axios": "^0.19.0",
     "core-js": "^2.6.5",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "js-cookie": "^2.2.1",
     "js-md5": "^0.7.3",
     "mockjs": "^1.0.1-beta3",
