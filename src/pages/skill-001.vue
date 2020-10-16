@@ -30,6 +30,7 @@
         <div class="sbox">
             <p>(4)为已有对象赋值多个新属性</p>
             <div>{{ user.name }}-{{ user.age }}-{{ user.sex }}</div>
+            <button @click="test01">点击 test111</button>
             <p>可以用Object.assign为这个对象重新赋值，这样就能添加多个新的响应式属性</p>
         </div>
 
@@ -74,7 +75,7 @@
         <div class="sbox">
             <p>(7)组件中props/methods/data/computed的渲染顺序,以及watch的使用</p>
             <p>props > methods > data > computed</p>
-            <renderOrder :name="cname"></renderOrder>
+            <renderOrder :name="cname" :vc="kage"></renderOrder>
             <div>
                 <p>data可以调用前面的props，methods的属性</p>
                 <p>computed中可以调用props，methods，data中的属性</p>
@@ -83,6 +84,8 @@
                 <p>但是，子组件中，在data里面定义的k(引用了name)并没有随之发生变化</p>
                 <p>但是，子组件中，在computed里面定义的kk(引用了name)随之发生了变化</p>
                 <p>如果想让k随之发生变化，可在子组件中watch,详见子组件</p>
+                <br />
+                <button @click="changeKage">在父组件中动态改变传给renderOrder的kage值</button>
             </div>
         </div>
     </div>
@@ -106,7 +109,8 @@ export default {
                 name: 'jack'
             },
             title: 'default',
-            cname: { name: 'jack' }
+            cname: { name: 'jack' },
+            kage: 123
         };
     },
     props: {},
@@ -148,6 +152,12 @@ export default {
             this.cname = {
                 name: 'tom'
             };
+        },
+        test01() {
+            this.user.age = 100;
+        },
+        changeKage() {
+            this.kage = 666;
         }
     },
     beforeCreate() {

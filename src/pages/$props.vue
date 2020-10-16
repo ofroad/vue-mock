@@ -6,7 +6,7 @@
         <router-link to="/listpage">to listpage</router-link>
         <br />
         <br />
-        <childprops placeholder="Enter your username" value="12" name="age"></childprops>
+        <childprops placeholder="Enter your username" :value="12" :name="age"></childprops>
         <p>在子组件中可用$props一次性接收</p>
     </div>
 </template>

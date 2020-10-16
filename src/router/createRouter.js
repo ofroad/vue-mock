@@ -5,7 +5,7 @@ import roleRouter from './roleRouter';
 import baseRouter from './baseRouter';
 
 const resetRouter = function() {
-    //重置路由
+    //重置路由---否则退出后重新登陆会报路由重复
     let newRouter = new VueRouter({
         routes: baseRouter
     });

@@ -27,7 +27,9 @@ export default {
     name: 'home',
     data() {
         return {
-            store: store_observable
+            store: store_observable,
+            pick: '',
+            a11: 123
         };
     },
     components: {},

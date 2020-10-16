@@ -7,6 +7,10 @@
         <p>std: {{ std }}</p>
         <button @click="chageAge">改变age</button>
         <button @click="chageStd">改变std</button>
+        <br />
+        <p>vc: {{ vc }}</p>
+        <p>vcdata: {{ vcdata }}</p>
+        <p>vccomputed: {{ vccomputed }}</p>
     </div>
 </template>
 
@@ -15,6 +19,10 @@ export default {
     name: 'renderOrder',
     props: {
         name: {
+            type: [String, Number, Object],
+            default: '100px'
+        },
+        vc: {
             type: [String, Number, Object],
             default: '100px'
         }
@@ -27,12 +35,16 @@ export default {
                 total: 20,
                 cur: 6
             },
-            std: ['1', 2, 3, 'hhh']
+            std: ['1', 2, 3, 'hhh'],
+            vcdata: this.vc
         };
     },
     computed: {
         kk() {
             return JSON.stringify(this.name) + ' 001';
+        },
+        vccomputed() {
+            return JSON.stringify(this.vc) + ' 001';
         }
     },
     watch: {

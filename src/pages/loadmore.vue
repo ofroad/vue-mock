@@ -142,6 +142,7 @@ export default {
         this.$nextTick(() => {
             this.setHeight();
         });
+        console.log('wwwwwwwwwwwwwwwwwwwwwwww===', this.$router);
     }
 };
 </script>
