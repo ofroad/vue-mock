@@ -23,6 +23,8 @@ import { userLoginOut, getQuan, getData, getData2, getQuan2, gethuodong, getzige
 //import axios from 'axios';
 //import axios123 from '../http/http.js';
 import { store_observable, mutations } from '../vuex/store_observable';
+import { mapState, mapGetters, mapActions, mapMutations } from 'vuex';
+
 export default {
     name: 'home',
     data() {
@@ -32,8 +34,22 @@ export default {
             a11: 123
         };
     },
+    computed: {
+        ...mapState(['loadingCount']),
+        //调用模块里面的
+        ...mapState('moduleA', {
+            count: state => state.count
+        }),
+        ...mapState('moduleA', ['ma']),
+        ...mapGetters('moduleA', {
+            doubleCount123: 'doubleCount'
+        }),
+        ...mapGetters('moduleA', ['gma'])
+    },
     components: {},
     methods: {
+        ...mapActions('moduleA', ['incrementIfOddOnRootSum']),
+        ...mapMutations('moduleA', ['incrementMA']),
         getName() {
             console.log('process.env.NODE_ENV===', process.env.NODE_ENV);
             console.log('process.env.VUE_APP_ENV===', process.env.VUE_APP_ENV);
@@ -176,6 +192,18 @@ export default {
             .catch(err => {
                 console.log('抽奖res err===', err);
             });
+        //map后调用
+        this.incrementIfOddOnRootSum();
+        this.incrementMA();
+
+        //非map调用
+        this.$store.dispatch('moduleA/incrementIfOddOnRootSum');
+        this.$store.commit('moduleA/incrementMA');
+        console.log('非map调用moduleA里面的count===', this.$store.state.moduleA.count);
+        console.log('非map调用moduleA里面的ma===', this.$store.state.moduleA.ma);
+        console.log('非map调用moduleA里面的getters doubleCount===', this.$store.getters['moduleA/doubleCount']);
+
+        console.log('store===', this.$store);
     }
 };
 </script>

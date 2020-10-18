@@ -6,7 +6,8 @@ Vue.use(Vuex);
 const moduleA = {
     namespaced: true,
     state: {
-        count: 10
+        count: 10,
+        ma: 'www'
     },
     mutations: {
         incrementMA(state) {
@@ -14,10 +15,19 @@ const moduleA = {
             state.count++;
         }
     },
-
+    actions: {
+        incrementIfOddOnRootSum({ state, commit, rootState }) {
+            console.log(state);
+            console.log(rootState);
+            commit('incrementMA');
+        }
+    },
     getters: {
-        doubleCount(state) {
-            return state.count * 2;
+        doubleCount(state, getters, rootState) {
+            return state.count * 2 + rootState.a;
+        },
+        gma(state, getters, rootState) {
+            return state.ma + rootState.a;
         }
     }
 };
@@ -31,7 +41,8 @@ export default new Vuex.Store({
         loadingCount: 0,
         //当前路由的上一个路由
         from: {},
-        routercached: ['listpage']
+        routercached: ['listpage'],
+        a: 100
     },
     getters: {
         doubleCount(state) {
