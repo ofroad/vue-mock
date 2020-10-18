@@ -399,6 +399,17 @@ const roleRouter = [
             role: ['superadmin', 'admin', 'common']
         },
         component: () => import(/* webpackChunkName: "debounce-component" */ '@/pages/debounce-component.vue')
+    },
+    {
+        path: '/mixin',
+        name: 'mixin',
+        meta: {
+            dep: 2,
+            needLogin: true,
+            title: 'mixin使用',
+            role: ['superadmin', 'admin', 'common']
+        },
+        component: () => import(/* webpackChunkName: "mixin" */ '@/pages/mixin.vue')
     }
 ];
 
