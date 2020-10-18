@@ -410,6 +410,17 @@ const roleRouter = [
             role: ['superadmin', 'admin', 'common']
         },
         component: () => import(/* webpackChunkName: "mixin" */ '@/pages/mixin.vue')
+    },
+    {
+        path: '/directive',
+        name: 'directive',
+        meta: {
+            dep: 2,
+            needLogin: true,
+            title: 'directive使用',
+            role: ['superadmin', 'admin', 'common']
+        },
+        component: () => import(/* webpackChunkName: "directive" */ '@/pages/directive.vue')
     }
 ];
 
