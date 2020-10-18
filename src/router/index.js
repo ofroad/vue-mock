@@ -8,7 +8,7 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-    console.log('=========beforeEach========');
+    console.log('=========router beforeEach========');
     console.log('main.js to===', to);
     console.log('main.js from===', from);
 
@@ -64,6 +64,15 @@ router.beforeEach((to, from, next) => {
             next();
         }
     }
+});
+
+router.beforeResolve((to, from, next) => {
+    console.log('=========router beforeResolve========');
+    next();
+});
+
+router.afterEach(() => {
+    console.log('=========router afterEach========');
 });
 
 export default router;

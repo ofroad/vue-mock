@@ -421,6 +421,21 @@ const roleRouter = [
             role: ['superadmin', 'admin', 'common']
         },
         component: () => import(/* webpackChunkName: "directive" */ '@/pages/directive.vue')
+    },
+    {
+        path: '/nav-guard',
+        name: 'nav-guard',
+        meta: {
+            dep: 2,
+            needLogin: true,
+            title: '所有导航守卫的使用和执行顺序',
+            role: ['superadmin', 'admin', 'common']
+        },
+        component: () => import(/* webpackChunkName: "nav-guard" */ '@/pages/nav-guard.vue'),
+        beforeEnter: (to, from, next) => {
+            console.log('=========router beforeEnter========');
+            next();
+        }
     }
 ];
 
