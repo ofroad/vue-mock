@@ -436,6 +436,17 @@ const roleRouter = [
             console.log('=========router beforeEnter========');
             next();
         }
+    },
+    {
+        path: '/var',
+        name: 'var',
+        meta: {
+            dep: 2,
+            needLogin: true,
+            title: '使用css变量',
+            role: ['superadmin', 'admin', 'common']
+        },
+        component: () => import(/* webpackChunkName: "nav-guard" */ '@/pages/var.vue')
     }
 ];
 
