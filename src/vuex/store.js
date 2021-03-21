@@ -42,7 +42,8 @@ export default new Vuex.Store({
         //当前路由的上一个路由
         from: {},
         routercached: ['listpage'],
-        a: 100
+        a: 100,
+        refreshTest: 10
     },
     getters: {
         doubleCount(state) {
@@ -96,6 +97,9 @@ export default new Vuex.Store({
                 }
             };
             doit[payload.action]();
+        },
+        setRefreshTest(state, payload) {
+            state.refreshTest = state.refreshTest + payload;
         }
     },
     actions: {},

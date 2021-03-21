@@ -11,7 +11,9 @@
         <p>observable store: {{ store.count }}</p>
         <button @click.prevent="handleAdd">首页 - 加</button>
         <button @click.prevent="handleMinus">首页 - 减</button><br />
-        <router-link to="/observable">to observable</router-link><br />
+        <router-link to="/observable">to observable</router-link><br /><br /><br /><br />
+        <p>refreshTest:{{ refreshTest }}</p>
+        <button @click.prevent="changeRefreshTest">改变refreshTest</button>
     </div>
 </template>
 
@@ -35,7 +37,7 @@ export default {
         };
     },
     computed: {
-        ...mapState(['loadingCount']),
+        ...mapState(['loadingCount', 'refreshTest']),
         //调用模块里面的
         ...mapState('moduleA', {
             count: state => state.count
@@ -107,6 +109,10 @@ export default {
         },
         handleMinus() {
             mutations.minusCount();
+        },
+        changeRefreshTest() {
+            console.log(this);
+            this.$store.commit('setRefreshTest', 10);
         }
     },
     beforeCreate() {
