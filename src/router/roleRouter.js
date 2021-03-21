@@ -446,7 +446,18 @@ const roleRouter = [
             title: '使用css变量',
             role: ['superadmin', 'admin', 'common']
         },
-        component: () => import(/* webpackChunkName: "nav-guard" */ '@/pages/var.vue')
+        component: () => import(/* webpackChunkName: "var" */ '@/pages/var.vue')
+    },
+    {
+        path: '/watch',
+        name: 'watch',
+        meta: {
+            dep: 2,
+            needLogin: true,
+            title: 'watch用法',
+            role: ['superadmin', 'admin', 'common']
+        },
+        component: () => import(/* webpackChunkName: "watch" */ '@/pages/watch.vue')
     }
 ];
 

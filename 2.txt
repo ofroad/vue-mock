@@ -49,3 +49,4 @@ resolve.alias.set配置路径别名===================================完成
 =====加mixin使用示例======
 =====使用css变量======
 =====结合localStorage刷新页面vuex数据不丢失(App.vue和Home.vue)======
+=====watch用法======
